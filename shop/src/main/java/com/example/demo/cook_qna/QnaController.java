@@ -25,7 +25,7 @@ public class QnaController {
 		
 	}
 	
-	
+	                       
 	
 	//QnA등록
 	@RequestMapping(value = "/qna/qna_Writing")
