@@ -52,7 +52,7 @@
 				</c:forEach>
 			</c:if>
 
-			<c:if test="${sessionScope.user_type == 1 || 2 }">
+			<c:if test="${sessionScope.user_type == 1 || sessionScope.user_type == 2 }">
 				<tr>
 					<td class="td_btn" colspan="4">
 						<input class="writing_btn" type="button" id="Writing" onclick="location.href = '${pageContext.request.contextPath }/recipelist/recipelist_writing'" value="레시피 작성">
