@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.cook_order.OrderMapper">
+<resultMap type="com.example.demo.cook_order.Order" id="order">
+	<result column="o_num" property="o_num"/>
+	<result column="o_date" property="o_date"/>
+	<result column="o_quantity" property="o_quantity"/>
+	<result column="o_postcode" property="o_postcode"/>
+	<result column="o_addr1" property="o_addr1"/>
+	<result column="o_addr2" property="o_addr2"/>
+	<result column="p_num" property="p_num"/>
+	<result column="user_id" property="user_id"/>
+	<result column="result" property="result"/>
+</resultMap>
+<!-- 주문하기 -->
+<insert id="insertOrder" parameterType="com.example.demo.cook_order.Order">
+	insert into cook_order values(seq_cook_order.nextval,sysdate,#{o_quantity},#{o_postcode},#{o_addr1},#{o_addr2},#{p_num},#{user_id},0)
+</insert>
+<!-- 주문 상세내역 -->
+<select id="selectOrder" resultMap="order" parameterType="int">
+	select * from cook_order where o_num=#{o_num}
+</select>
+<!-- 구매내역 리스트 -->
+<select id="selectAllOrder" resultMap="order" parameterType="String">
+	select * from cook_order where user_id=#{user_id} order by o_num
+</select>
+<!-- 구매취소 -->
+<delete id="deleteOrder" parameterType="int">
+	delete cook_order where o_num=#{o_num}
+</delete>
+<!-- 배송완료 표시 -->
+<update id="updateOrder" parameterType="com.example.demo.cook_order.Order">
+	update cook_order set result=#{result} where o_num=#{o_num}
+</update>
+	
+<!-- 관리자 전용 전체 주문내역 보기 -->
+<select id="selectAdmin" resultMap="order">
+	select * from cook_order order by o_date
+</select>
+</mapper>

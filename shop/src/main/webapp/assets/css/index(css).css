@@ -1,0 +1,145 @@
+html {
+    font-size: 62.5%;
+    
+}
+
+
+/*  --------------- 諛곕꼫 �뒳�씪�씠�뱶---------------  */
+
+
+/*------------ 移댄뀒怨좊━ ----------- */
+
+.main_category_container {
+    margin: 5vw 10vw 5vw 10vw;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+/*     display: flex; */
+/*     justify-content: space-evenly; */
+/*     flex-wrap: wrap; */
+/*     align-content: center; */ 
+}
+
+
+
+.main_category_a {
+    width: 15vw;
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.main_category_img {
+    max-width: 17rem;
+    max-height: 20rem;
+    width: 6vw;
+    height: 8vh;
+}
+
+
+/* 移댄뀒怨좊━ 泥レ㎏ 以� */
+
+.main_category_group1 {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 2rem 0 2rem 0;
+}
+
+
+/* 移댄뀒怨좊━ �몮吏� 以� */
+
+.main_category_group2 {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 5rem 0 2rem 0;
+}
+
+
+/* --------------- �긽�뭹 由ъ뒪�듃 �쟾泥� �쁺�뿭 �꽕�젙 --------------- */
+
+.main_product_list_container {
+    margin: 2vw 10vw 2vw 10vw;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+}
+
+.main_product_total_area {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom : 10rem;
+}
+
+
+/* �긽�뭹 由ъ뒪�듃 �쁺�뿭 蹂� �꽕�젙 */
+
+.suggestion_area {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+
+/* 由ъ뒪�듃 �궗吏� �꽕�젙 */
+
+.suggestion_menu {
+    justify-content: center;
+}
+
+.sug_title{
+	text-align: center;
+	font-size: 3rem;
+	
+}
+
+.sug1,.sug2, .sug3{
+	width:300px; 
+	height:300px;
+	margin:10px;
+}
+
+.sale_area {
+    justify-content: center;
+    margin-top:15rem;
+    background-color:   #F6F6F6;
+}
+
+.sal1{
+	width:800px; 
+	height:400px;
+	object-fit:cover;
+	margin:10px;
+	border-style: outset;
+}
+
+
+/* 由ъ뒪�듃 �긽�뭹 �꽕紐� �꽕�젙 */
+
+.main_product_content_a {
+    text-decoration: none;
+    color: black;
+    font-size: 2rem;
+    text-align: center;
+}
+
+
+/* 由ъ뒪�듃 �긽�뭹 媛�寃� �꽕�젙 */
+
+.main_product_price_div span {
+    text-decoration: none;
+    color: rgb(207, 73, 73);
+    font-size: 2rem;
+}
+
+.scale  img {
+
+    transform:scale(1);
+    transition:.1s; 
+    overflow:hidden;
+    
+}
+.scale:hover img {
+    transform:scale(0.9);
+}

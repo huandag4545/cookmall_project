@@ -1,0 +1,96 @@
+html {
+    font-size: 62.5%;
+}
+
+.admin_category_container {
+    /* border: 1px solid black; */
+    margin: auto;
+}
+
+.admin_category_area {
+    /* border: 1px solid red; */
+    width: 65%;
+    margin: auto;
+}
+
+
+p {
+    font-size: 1.5rem;
+}
+
+.dddd {
+    border-left: 1px solid black;
+    height: 50rem;
+}
+
+.admin_all_category_area {
+    /* border: 1px solid blue; */
+    width: 65%;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.admin_category1,
+.admin_category3,
+.admin_category3 {
+    margin: 0 10rem 0 10rem;
+}
+
+table {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+
+/* 媛� �뀒�씠釉� �젣紐� */
+
+.admin_category_caption {
+    border: 1px solid black;
+    font-size: 2.5rem;
+    padding: 1rem 0 1rem 0.5rem;
+    background-color: #006400;
+    color: white;
+}
+
+td {
+    border: 1px solid black;
+    font-size: 1.5rem;
+    padding: 1rem 0.5rem 1rem 0.5rem;
+    text-align: center;
+}
+
+
+/* �빆紐� 泥섏쓬 �굹���궇 �븣 */
+
+.category1_input,
+.category2_input,
+.category3_input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    width: 100%;
+    font-size: 1.5rem;
+    /* font-weight: 600; */
+    border: none;
+}
+
+
+/* �빆紐� hover  */
+
+.category1_input:hover,
+.category2_input:hover,
+.category3_input:hover {
+    cursor: pointer;
+}
+
+
+/* �빆紐� �겢由� */
+
+.category1_input:focus,
+.category2_input:focus,
+.category3_input:focus {
+    outline: none;
+}

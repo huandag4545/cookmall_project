@@ -1,0 +1,207 @@
+html {
+    font-size: 62.5%;
+}
+
+
+
+/* 占쏙옙품 占쏙옙占쏙옙트 占쏙옙占쏙옙占싱놂옙 */
+
+.product_list_container {
+    border: 1px solid black;
+    background-color: white;
+    margin: auto;
+    width: 90%;
+    margin-top: 10rem;
+    margin-bottom: 10rem;
+    border-radius: 20px;
+}
+
+.cart_product_font_area {
+    /* border: 1px solid blue; */
+    width: 90%;
+    margin-top: 10rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15rem;
+}
+
+.cart_font {
+    /* border: 1px solid red; */
+    width: 80%;
+    margin: auto;
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+
+/* 占쏙옙품占쏙옙 占쏙옙占쏙옙 占쏙옙 占쏙옙占쏙옙占싱놂옙 */
+
+.empty_cart_product_container {
+    /* border: 1px solid red; */
+    width: 10%;
+    margin: auto;
+}
+
+.empty_font {
+    /* border: 1px solid red; */
+    width: 95%;
+    margin: auto;
+    font-size: 3rem;
+}
+
+
+/* 占쏙옙품 占쏙옙占쏙옙 占쏙옙 占쏙옙占쏙옙占싱놂옙 */
+
+.cart_product_container {
+    /* border: 1px solid red; */
+    display: flex;
+    width: 70%;
+    margin-top: 7rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+}
+
+.cart_product_img_container {
+	margin : 0 0 0 5rem;
+}
+
+
+/* 占쏙옙품 占쏙옙占쏙옙트 占싱뱄옙占쏙옙 크占쏙옙 */
+
+.product_img {
+    /* border: 1px solid orange; */
+    width: 20rem;
+    height: 20rem;
+    margin: 0 5rem 0 0;
+}
+
+
+/* 占쏙옙품 占쏙옙占쏙옙 占쏙옙占쏙옙 */
+
+.product_info_area {
+    /* border: 1px solid yellow; */
+    margin: 0 3rem 0 0;
+}
+
+
+/* 占쏙옙품 占싱몌옙 占쏙옙占쏙옙 */
+
+.cart_product_name_container {
+    /* border: 1px solid green; */
+    font-size: 3rem;
+    font-weight: 600;
+    margin: 1rem 0 1rem 0;
+    /* margin: 0 3rem 0 0; */
+}
+
+
+/* 占쏙옙품 占쏙옙占쏙옙 占쏙옙占쏙옙 */
+
+.cart_product_price_container {
+    /* border: 1px solid blue; */
+    font-size: 2.5rem;
+    margin: 1rem 0 1rem 0;
+}
+
+
+/* 占쏙옙품 占쏙옙占쏙옙 占쏙옙占쏙옙 */
+
+.cart_product_info_container {
+    /* border: 1px solid navy; */
+    font-size: 2rem;
+    margin: 1rem 0 1rem 0;
+}
+
+
+/* 占쏙옙품 카占쌓곤옙 占쏙옙占쏙옙 */
+
+.cart_product_category_container {
+    /* border: 1px solid brown; */
+    font-size: 1.5rem;
+    margin: 1rem 0 1rem 0;
+}
+
+
+/* 占쏙옙품 占쏙옙 占싱뱄옙占쏙옙 占쏙옙占쏙옙 */
+
+.cart_product_img_area {
+    /* border: 1px solid midnightblue; */
+    display: flex;
+    align-items: center;
+    margin: 3rem 0 3rem 10rem;
+}
+
+
+/* 占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙 */
+
+.cart_product_count {
+    /* border: 1px solid red; */
+    margin: 0 0 0 2rem;
+}
+
+
+/* a占쏙옙크 占쏙옙占쏙옙 */
+
+.cart_product_list {
+    text-decoration: none;
+    color: black;
+}
+
+
+/* 占쏙옙품 占쏙옙占� 占쏙옙占쏙옙 */
+
+.cart_product_reply_container {
+    /* border: 1px solid red; */
+    display: flex;
+    align-items: center;
+    margin: 3rem 0 3rem 10rem;
+}
+
+
+/* 占쏙옙占� 占싱뱄옙占쏙옙 占쏙옙占쏙옙 */
+
+.cart_product_reply_area {
+    /* border: 1px solid saddlebrown; */
+}
+
+
+/* 占쏙옙占� 占쏙옙占쏙옙 占쏙옙占쏙옙 */
+
+.cart_product_reply_count {
+    margin: 0 0 0 2rem;
+}
+
+.hr1 {
+    width: 80%;
+    margin-top: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+}
+
+.hr2 {
+    width: 70%;
+    margin-top: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+}
+
+.buy_btn{
+	text-align-last: center;
+}
+.buy_btn1, .delbuy_btn1{
+	font-size: large;
+	margin-left: 5px;
+}
+
+.checkDt{
+    align-self: center;
+    margin-left: -50px;
+}
+
+.checkbutn{
+	margin-left: 10%;
+}

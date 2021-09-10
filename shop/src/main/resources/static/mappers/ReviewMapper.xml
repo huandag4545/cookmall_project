@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.cook_review.ReviewMapper">
+   <resultMap type="com.example.demo.cook_review.Review" id="Review">
+      <result column="review_num" 		property="review_num" />
+      <result column="writer_id" 		property="writer_id" />
+      <result column="review_content" 	property="review_content" />
+      <result column="product_num" 		property="product_num" />
+      <result column="review_date" 		property="review_date" />
+   </resultMap>
+   
+   <insert id="insertReview" parameterType="com.example.demo.cook_review.Review">
+   		INSERT	INTO cook_review
+   		VALUES ( seq_cook_review.nextval, #{writer_id}, #{review_content}, #{product_num}, sysdate )
+   </insert>
+   
+   
+   <update id="updateReview" parameterType="com.example.demo.cook_review.Review">
+   		UPDATE	cook_review
+   		SET		review_content = #{review_content}
+   		WHERE	review_num = #{review_num}
+   </update>
+   
+   <delete id="deleteReview" parameterType="int">
+   		DELETE	FROM cook_review
+   		WHERE	review_num = #{review_num}
+   </delete>
+   
+   <select id="selectAllReview" resultMap="Review">
+   	SELECT *
+   	from cook_review
+    order by review_num
+   </select>
+   
+</mapper>

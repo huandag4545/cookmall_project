@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.cook_qna.QnaMapper">
+	
+	<resultMap type="com.example.demo.cook_qna.Qna" id="QnA">
+		<result property="qna_num" column="qa_num"/>
+		<result property="qna_title" column="qa_title"/>
+		<result property="qna_content" column="qa_content"/>
+		<result property="qna_type" column="qa_type"/>
+		<result property="qna_date" column="qa_date"/>
+	</resultMap>
+	
+	<insert id="insertQnA" parameterType="com.example.demo.cook_qna.Qna">
+		INSERT INTO cook_qna
+		VALUES ( seq_cook_qna.nextval, #{qna_title}, #{qna_content}, sysdate, #{qna_type})
+	</insert>
+	
+	<!-- QnA 시퀀스 번호로 선택 -->
+	<select id="selectQnAByNum" parameterType="int" resultMap="QnA">
+		SELECT 	*
+		FROM 	cook_qna
+		WHERE 	qa_num = #{qna_num}
+	</select>
+	
+	<!-- QnA 타입으로 선택 -->
+	<select id="selectQnAType" parameterType="int" resultMap="QnA">
+		SELECT 	*
+		FROM 	cook_qna
+		WHERE 	qa_type = #{qna_type}
+	</select>
+	
+	<!-- QnA 전체 선택 -->
+	<select id="selectAllQnA" resultMap="QnA">
+		SELECT 	*
+		FROM 	cook_qna
+		ORDER	BY qa_num
+	</select>
+	
+	<update id="editQnA" parameterType="com.example.demo.cook_qna.Qna">
+		UPDATE 	cook_qna
+		
+		SET 	qa_title = #{qna_title},
+				qa_content = #{qna_content},
+				qa_type = #{qna_type}
+			
+		WHERE 	qa_num = #{qna_num}
+	</update>
+	
+	<delete id="deleteQnA" parameterType="int">
+		DELETE 	FROM cook_qna
+		WHERE 	qa_num = #{qna_num}
+	</delete>
+	
+</mapper>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.example.demo.cook_admin.CategoryMapper">
+  
+   <resultMap type="com.example.demo.cook_admin.Category" id="categoryResult">
+  
+      <result property="ca_num" column="ca_num"/>
+      <result property="ca_name" column="ca_name"/>
+      <result property="parent_category_num" column="parent_category_num"/>
+   </resultMap>
+   
+   <insert id="insertCategory1" parameterType="com.example.demo.cook_admin.Category">
+      INSERT   INTO cook_category1 
+      VALUES   (#{ca_num}, #{ca_name})
+   </insert>
+   
+   <insert id="insertCategory2" parameterType="com.example.demo.cook_admin.Category">
+      INSERT   INTO cook_category2 
+      VALUES   (#{ca_num}, #{ca_name}, #{parent_category_num})
+   </insert>
+   
+   <select id="selectCategory1" resultMap="categoryResult" parameterType="int">
+      SELECT   	* 
+      FROM   	cook_category1 
+      WHERE   	ca_num = #{ca_num}
+      ORDER BY ca_num
+   </select>
+   
+   <select id="selectCategory2" resultMap="categoryResult" parameterType="int">
+      SELECT   	* 
+      FROM   	cook_category2 
+      WHERE   	ca_num = #{ca_num}
+      ORDER BY ca_num
+   </select>
+
+   
+   <select id="selectAllCategory1" resultMap="categoryResult">
+      SELECT   	* 
+      FROM   	cook_category1
+   </select>
+   
+   <select id="selectAllCategory2" resultMap="categoryResult" parameterType="int">
+      SELECT   	* 
+      FROM   	cook_category2 
+      WHERE   	parent_category_num = #{parent_category_num}
+   </select>
+   
+   <update id="updateCategory1" parameterType="com.example.demo.cook_admin.Category">
+      UPDATE   	cook_category1 
+      SET      	ca_name = #{ca_name} 
+      WHERE   	ca_num = #{ca_num}
+   </update>
+   
+   <update id="updateCategory2" parameterType="com.example.demo.cook_admin.Category">
+      UPDATE   	cook_category2 
+      SET      	ca_name = #{ca_name} 
+      WHERE   	ca_num = #{ca_num}
+   </update> 
+
+   <delete id="deleteCategory1" parameterType="int">
+      DELETE   FROM cook_category1 
+      WHERE		ca_num = #{ca_num}
+   </delete>   
+   
+   <delete id="deleteCategory2" parameterType="int">
+      DELETE   FROM cook_category2 
+      WHERE   	ca_num = #{ca_num}
+   </delete>   
+
+   
+   <select id="getNum1" resultType="int">
+      SELECT   seq_cook_category1.nextval
+      FROM   	dual
+   </select>
+   
+   <select id="getNum2" resultType="int">
+      SELECT   seq_cook_category2.nextval
+      FROM   	dual
+   </select>
+
+</mapper>

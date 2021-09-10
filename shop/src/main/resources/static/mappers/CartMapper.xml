@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.cook_cart.CartMapper">
+
+<resultMap type="com.example.demo.cook_cart.Cart" id="Cart">
+      <result column="c_num" property="c_num"/>
+      <result column="user_id" property="user_id"/>
+      <result column="product_num" property="product_num"/>
+   </resultMap>
+   
+   <resultMap type="com.example.demo.cook_product.Product" id="Product">
+      <result property="p_num"      column="p_num" />
+      <result property="p_name"      column="p_name" />
+      <result property="p_price"      column="p_price" />
+      <result property="p_info"      column="p_info" />
+      <result property="ca1_num"      column="ca1_num" />
+      <result property="ca2_num"      column="ca2_num" />
+      <result property="reg_date"      column="reg_date" />
+      <result property="user_id"         column="id" />
+   </resultMap>
+   
+   <insert id="insertCart" parameterType="com.example.demo.cook_cart.Cart">
+      INSERT   INTO   cook_cart
+      VALUES   (#{c_num}, #{user_id}, #{product_num})
+   </insert>
+   
+   <select id="selectByUserId" parameterType="String" resultMap="Product">
+      SELECT   * 
+      FROM      cook_product 
+      WHERE   p_num in (select product_num from cook_cart where user_id = #{user_id})
+    </select>
+   
+    <select id="countUserIdByProductNum" parameterType="int" resultType="int">
+      SELECT
+      COUNT (user_id)
+      FROM   cook_cart
+      WHERE   product_num = #{product_num}
+   </select>
+   
+   <select id="selectByUserIdProductNum" parameterType="java.util.Map" resultMap="Cart">
+      SELECT * 
+      FROM cook_cart
+      WHERE product_num = #{product_num}
+      AND user_id = #{user_id}
+   </select>
+   
+   <!-- 2개 이상의 매개변수 받기위해 Map 사용-->
+   <delete id="deleteCart" parameterType="java.util.Map">
+      DELETE
+      FROM   cook_cart
+      WHERE   product_num = #{product_num} and user_id = #{user_id}
+   </delete>
+   
+   <delete id="deleteAllCart" parameterType="String">
+      DELETE
+      FROM   cook_cart
+      WHERE   user_id = #{user_id}
+   </delete>
+
+   <!-- 제품 삭제시 장바구니 목록까지 삭제 -->
+   <delete id="deleteProductAndCart" parameterType="int">
+   		DELETE	FROM cook_cart
+   		WHERE	product_num = #{product_num}
+   </delete>
+   
+   <select id="getNum" resultType="int">
+      SELECT    seq_cook_cart.nextval
+      FROM      dual
+   </select>
+   
+   
+</mapper>

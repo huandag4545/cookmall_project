@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.cook_product.ProductMapper">
+	<resultMap id="ProductResult" type="com.example.demo.cook_product.Product">
+		<result column="p_num" property="p_num" />
+		<result column="p_name" property="p_name" />
+		<result column="p_price" property="p_price" />
+		<result column="p_info" property="p_info" />
+		<result column="ca1_num" property="ca1_num" />
+		<result column="ca2_num" property="ca2_num" />
+		<result column="reg_date" property="reg_date" />
+		<result column="result" property="result" />
+	</resultMap>
+	
+	<!--제품등록-->
+	<insert id="insert" parameterType="com.example.demo.cook_product.Product">
+	insert into cook_product values(#{p_num},#{p_name},#{p_price},#{p_info},#{ca1_num},#{ca2_num},sysdate,1)
+	</insert>
+	
+	<!--전체제품리스트-->
+	<select id="selectAll" resultMap="ProductResult">
+	select * from cook_product order by p_num
+	</select>
+	
+	<!-- 상세 검색 -->
+	<select id="selectByNum" parameterType="int" resultMap="ProductResult">
+		select * from cook_product where p_num = #{p_num} order by p_num
+	</select>
+	
+	<!-- 제품명으로 검색하기 -->
+	<select id="selectByName" parameterType="String" resultMap="ProductResult">
+	select * from cook_product where p_name LIKE '${p_name}'
+	</select>
+	
+	<!--가격별로조회  -->
+	<select id="selectByPrice" parameterType="java.util.Map" resultMap="ProductResult">
+		select * from cook_product where p_price between #{min} and #{max} order by p_num
+	</select>
+	
+	<!-- 대분류 카테고리로 검색 -->
+		<select id="selectByC1" parameterType="int" resultMap="ProductResult">
+		select * from cook_product where ca1_num = #{ca1_num} order by p_num
+	</select>
+	
+	<!-- 중분류 카테고리로 검색 -->
+		<select id="selectByC2" parameterType="int" resultMap="ProductResult">
+		select * from cook_product where ca2_num = #{ca2_num} order by p_num
+	</select>
+	
+	<!-- 원산지로  검색 -->
+		<select id="selectByInfo" parameterType="String" resultMap="ProductResult">
+		select * from cook_product where p_info = #{p_info} order by p_num
+	</select>
+	
+	<!-- 제품 수정 제품명,가격,대분류 번호.중분류번호,원산지 변경가능 -->
+	<update id="update" parameterType="com.example.demo.cook_product.Product">
+	update cook_product set p_name=#{p_name},p_price=#{p_price},ca1_num=#{ca1_num},ca2_num=#{ca2_num},p_info=#{p_info} where p_num=#{p_num}
+	</update>
+
+	
+	<!-- 제품 삭제 -->
+	<delete id="delete" parameterType="int">
+	delete cook_product where p_num=#{p_num}
+	</delete>
+	
+	<!-- 글번호 생성 -->
+	<select id="getNum" resultType="int">
+      SELECT   	seq_cook_product.nextval
+      FROM   	dual
+   </select>
+	
+	
+	<!-- 8/31추가 총 상품 수  -->
+	<select id="getTotalProductNum" resultType="int">
+         SELECT   COUNT(*)
+         FROM   cook_product
+   </select>
+   
+      <!-- 오늘 등록된 상품 수 -->
+   <select id="getTodayProductNum" resultType="int">
+      SELECT   COUNT(*) 
+      FROM   	cook_product 
+      WHERE   TO_CHAR(reg_date,'YYMMDD') = TO_CHAR(SYSDATE,'YYMMDD')
+   </select>	
+	
+	
+	
+</mapper>

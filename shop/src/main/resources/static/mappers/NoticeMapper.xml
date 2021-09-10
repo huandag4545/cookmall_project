@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.cook_notice.NoticeMapper">
+	<resultMap type="com.example.demo.cook_notice.Notice" id="Notice">
+		<result property="notice_num" column="notice_num"/>
+		<result property="notice_title" column="notice_title"/>
+		<result property="notice_content" column="notice_content"/>
+		<result property="notice_date" column="notice_date"/>
+	</resultMap>
+	
+	<!-- 공지사항 등록 -->
+	<insert id="insertNotice" parameterType="com.example.demo.cook_notice.Notice">
+		INSERT INTO cook_notice
+		VALUES(
+			seq_cook_notice.nextval,
+			#{notice_title},
+			#{notice_content},
+			sysdate
+		)
+	</insert>
+	
+	<!-- 공지사항 전체 출력 -->
+	<select id="selectAllNotice" resultMap="Notice">
+		SELECT	*
+		FROM	cook_notice
+		ORDER BY notice_num
+	</select>
+
+	<!-- notice_num으로 출력 -->
+	<select id="selectNotice" parameterType="int" resultMap="Notice">
+		SELECT	*
+		FROM	cook_notice
+		WHERE	notice_num = #{notice_num}
+	</select>
+
+	<!-- 공지사항 수정 -->
+	<update id="updateNotice" parameterType="com.example.demo.cook_notice.Notice">
+		UPDATE	cook_notice
+		SET		notice_title = #{notice_title},
+				notice_content = #{notice_content}
+		WHERE	notice_num = #{notice_num}
+	</update>
+	
+	<!-- 삭제 -->
+	<delete id="deleteNotice" parameterType="int">
+		DELETE
+		FROM	cook_notice
+		WHERE	notice_num = #{notice_num}
+	</delete>
+</mapper>
