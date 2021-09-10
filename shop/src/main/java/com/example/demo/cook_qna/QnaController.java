@@ -15,7 +15,7 @@ public class QnaController {
 	
 	@Autowired private QnaService Qna_Service;
 	
-	@GetMapping(value="/qna/qna_list")
+	@GetMapping(value="/qna/qna_List")
 	public void qnaListForm() {
 		
 	}
