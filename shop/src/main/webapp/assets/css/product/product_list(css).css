@@ -3,13 +3,13 @@
 		background-color: white;
 		align-items: center;
 		height: 1100px;
-		width: 1700px;
+		width: 1400px;
 		left: 300px
 		
 	}
 
 	#main{
-		width: 100%;
+		width: 80%;
 		height: 1800px;
 		display: block;
 	}
@@ -34,7 +34,7 @@
 	}
 	
 	.list_box{
-		width :1700px;
+		width : 1400px;
 	}
 
 

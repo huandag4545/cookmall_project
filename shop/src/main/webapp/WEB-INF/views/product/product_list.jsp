@@ -30,9 +30,6 @@
 						type="text" name="max"> <input type="submit" value="검색">
 				</form>
 			</div>
-			<div>
-				<a href="${pageContext.request.contextPath}/product/product_add">싱품 등록</a>
-			</div>
 			<div class="list_box">
 				<c:if test="${empty allprodlist }">
 					<div class="empty">상품이 없습니다.</div>

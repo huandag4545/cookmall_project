@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/assets/css/inc/topbar2(css).css?after">	
 <link rel="stylesheet" href="${pageContext.request.contextPath }/assets/css/inc/navbar(css).css?after">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script>
