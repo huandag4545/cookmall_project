@@ -205,6 +205,7 @@ public class ProductController {
 		@RequestMapping(value = "/product/nameList")
 		public ModelAndView nameList(@RequestParam(value = "p_name") String p_name, Product p) {
 			ModelAndView mav = new ModelAndView("/search/search");
+			System.out.println(p_name);
 			ArrayList<Product> prodlist = (ArrayList<Product>) product_service.SearchList(p_name);
 			ArrayList<String> fileList = new ArrayList<String>();
 			String path = "";
@@ -219,7 +220,7 @@ public class ProductController {
 					fileList.add(files[0]);
 				}
 			}
-			mav.addObject("list", prodlist);
+			mav.addObject("prodlist", prodlist);
 			mav.addObject("fileList", fileList);
 			return mav;
 		}

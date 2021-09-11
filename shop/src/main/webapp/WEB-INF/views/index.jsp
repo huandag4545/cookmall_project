@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
    <!-- Jquery -->
    <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
    
@@ -38,9 +38,9 @@
 </head>
 <body>
 
-   <!-- top ¿µ¿ª ½ÃÀÛ -->
+   <!-- top ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ -->
    <c:import url="${pageContext.request.contextPath }/inc/topbar.jsp" />
-   <!-- top ¿µ¿ª ³¡ -->
+   <!-- top ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ -->
    
    
    <div>
@@ -70,39 +70,39 @@
 	       </div>
 	    </div>
     </div>
-    <!-- ¹è³Ê ½½¶óÀÌµå ³¡ -->
+    <!-- ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ -->
       
    <div class="suggestion_area">
-   <div class="sug_title">¿À´ÃÀÇ ÃßÃµ ¸Þ´º</div>
+   <div class="sug_title">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ãµ ï¿½Þ´ï¿½</div>
    <ul class="suggestion_menu">
-      <div class="scale"><li><a href="#"><img class="sug1" src="/assets/img/sug1.jpg" /></a><hr/>´ß°¡½¿»ì »ø·¯µå<br></li></div>
-      <div class="scale"><li><a href="#"><img class="sug2" src="/assets/img/sug2.jpg"/></a><hr/>»õ¿ìÆÄ½ºÅ¸ »ø·¯µå<br></li></div>
-      <div class="scale"><li><a href="#"><img class="sug3" src="/assets/img/sug3.jpg"/></a><hr/>Åä¸¶Åä ¹ÙÁú ÆÄ½ºÅ¸<br></li>   </div>
+      <div class="scale"><li><a href="#"><img class="sug1" src="/assets/img/sug1.jpg" /></a><hr/>ï¿½ß°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½<br></li></div>
+      <div class="scale"><li><a href="#"><img class="sug2" src="/assets/img/sug2.jpg"/></a><hr/>ï¿½ï¿½ï¿½ï¿½ï¿½Ä½ï¿½Å¸ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½<br></li></div>
+      <div class="scale"><li><a href="#"><img class="sug3" src="/assets/img/sug3.jpg"/></a><hr/>ï¿½ä¸¶ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ä½ï¿½Å¸<br></li>   </div>
 
    </ul>
    </div>
    
       <div class="sale_area">
-   <div class="sug_title">¿À´ÃÀÇ Æ¯º° ÇÒÀÎ</div>
+   <div class="sug_title">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Æ¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½</div>
    <ul class="suggestion_menu">
-      <div class="scale"><li><a href="#"><img class="sug1" src="/assets/img/eggs.jpg" /></a><hr/>½Ì½ÌÇÑ °è¶õ<br>5,000¿ø<br></li></div>
-      <div class="scale"><li><a href="#"><img class="sug2" src="/assets/img/tomato.jpg"/></a><hr/>À¯±â³ó Åä¸¶Åä<br>4,500¿ø<br></li></div>
-      <div class="scale"><li><a href="#"><img class="sug3" src="/assets/img/melon1.jpg"/></a><hr/>´Þ´Þ ¸Þ·Ð<br>7,000¿ø<br></li></div>
+      <div class="scale"><li><a href="#"><img class="sug1" src="/assets/img/eggs.jpg" /></a><hr/>ï¿½Ì½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½<br>5,000ï¿½ï¿½<br></li></div>
+      <div class="scale"><li><a href="#"><img class="sug2" src="/assets/img/tomato.jpg"/></a><hr/>ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ä¸¶ï¿½ï¿½<br>4,500ï¿½ï¿½<br></li></div>
+      <div class="scale"><li><a href="#"><img class="sug3" src="/assets/img/melon1.jpg"/></a><hr/>ï¿½Þ´ï¿½ ï¿½Þ·ï¿½<br>7,000ï¿½ï¿½<br></li></div>
 
    </ul>
    </div>
 <!-- 
    <ul class="sale_area">
-      <li><h2>¿À´ÃÀÇ Æ¯°¡</h2><br><h3>-<br>24½Ã°£ ÇÑÁ¤ Æ¯°¡</h3></li>
+      <li><h2>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Æ¯ï¿½ï¿½</h2><br><h3>-<br>24ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ¯ï¿½ï¿½</h3></li>
       <li><a href="#"><img class="sal1" src="/assets/img/sale1.jpg"/></a></li>
    
    </ul>
  -->
 
 
-   <!-- footer ¿µ¿ª ½ÃÀÛ -->
+   <!-- footer ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ -->
    <c:import url="${pageContext.request.contextPath }/inc/footer.jsp" />
-   <!-- footer ³¡ -->
+   <!-- footer ï¿½ï¿½ -->
 
 </body>
 </html>

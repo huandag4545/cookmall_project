@@ -32,7 +32,7 @@
 	
 	<!-- 제품명으로 검색하기 -->
 	<select id="selectByName" parameterType="String" resultMap="ProductResult">
-	select * from cook_product where p_name LIKE '${p_name}'
+	select * from cook_product where p_name LIKE '%'||#{p_name}||'%'
 	</select>
 	
 	<!--가격별로조회  -->

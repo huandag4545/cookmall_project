@@ -2,9 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
-<html lang="ko">
 <head>
 <meta charset="UTF-8">
+<title></title>
 <!-- CSS 기입? -->
 <link rel="stylesheet" href="${pageContext.request.contextPath }/assets/css/inc/topbar(css).css?aft">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/assets/css/inc/topbar2(css).css?of">
@@ -28,6 +28,7 @@ $(document).ready(function(){
 </script>
 
 </head>
+
 <body>
 	<div class = "topbar_container">
 		<div class = "topbar_area">
@@ -45,10 +46,9 @@ $(document).ready(function(){
         		<ul>
 	        		<c:if test="${sessionScope.user_type == 1 }">
 		                <li><a class="list" href="/order/orderList"> ${sessionScope.user_nickname}님 </a></li>
-		                <li><a class="list"  href="${pageContext.request.contextPath }/user/logout" onClick="alert('로그아웃 되었습니다')"> 로그아웃 </a></li>
-		                <li><a class="list" href="${pageContext.request.contextPath }/product/prodlist"> 상품리스트 </a></li>
-		                <li><a class="list" href="${pageContext.request.contextPath }/notice/notice_board?user_id=${sessionScope.user_id}"> 공지사항 </a></li>
-		                <li><a class="list" href="${pageContext.request.contextPath }/recipelist/recipelist_board"> 레시피 </a></li>
+		                <li><a class="list" href="${pageContext.request.contextPath }/notice/notice_board?user_id=${sessionScope.user_id}"> 마이페이지 </a></li>
+		                <li><a class="list" href="${pageContext.request.contextPath }/product/prodlist"> 장바구니 </a></li>
+		                <li><a class="list"  href="${pageContext.request.contextPath }/user/logout" onClick="alert('로그아웃 되었습니다')"> 로그아웃 </a></li>               
 		                <!--  -->
 	        		</c:if>
 	        		<c:if test="${sessionScope.user_type == 2 }">
