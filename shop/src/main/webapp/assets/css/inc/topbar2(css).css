@@ -2,18 +2,11 @@
 
 .dropmenu{
 border:none;
-border:2px solid gray;
+border:0px;
 margin:0px;
-margin-left : 190px;
 padding:0px;
 font: "sans-serif";
-font-weight:bold;
-margin-top: 3px;
-font-size:20px;
-height : 50px;
-width : 145px;
-text-align : center;
-border-radius : 10px;
+font-size:18px;
 }
 
 .dropmenu ul{

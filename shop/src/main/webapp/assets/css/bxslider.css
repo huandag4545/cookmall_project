@@ -13,7 +13,7 @@
   -ms-touch-action: pan-y;
   touch-action: pan-y;
 }
-.bx-wrapper img {
+.bx-wrapper .slider_img {
   max-width: 100%;
   display: block;
   height : 300px;

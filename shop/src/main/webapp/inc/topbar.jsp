@@ -60,29 +60,28 @@ $(document).ready(function(){
 		</div>
 	</div>
 	
-	<div class="top_menu_total_container">
-    
-	 <!-- 로고 시작 -->
-        <div class="top_menu_logo_area">
-            <a href="${pageContext.request.contextPath }/index" class="top_menu_logo_a">
-                <img src="${pageContext.request.contextPath }/assets/img/logo1.jpg" alt="logo" class="top_menu_logo_img">
-            </a>
-        </div>
+	<div class="logo_search_area">
+		<div class="top_menu_total_container">    
+		 <!-- 로고 시작 -->
+	        <div class="top_menu_logo_area">
+	            <a href="${pageContext.request.contextPath }/index" class="top_menu_logo_a">
+	                <img src="${pageContext.request.contextPath }/assets/img/logo1.jpg" alt="logo" class="top_menu_logo_img">
+	            </a>
+	        </div>
+		</div>
+		<div class="top_menu_total_container2">
+	            <!-- 검색창 -->
+	        <form action="${pageContext.request.contextPath }/product/nameList">
+	           <div class="top_menu_search_area">          
+	               <input type="text" class="top_menu_search_input" id="top_search_input" name="p_name" placeholder="검색어를 입력하세요">
+	               <input type="submit" class="top_menu_search_input" id="top_search_icon" value="" />
+	           </div>
+	           <input type="hidden" id="searchKeyword_id" name="user_id" value="${sessionScope.user_id}"/>
+	      	</form>
+	     </div>
 	</div>
-	<div class="top_menu_total_container2">
-            <!-- 검색창 -->
-        <form action="${pageContext.request.contextPath }/product/searchKeyword">
-           <div class="top_menu_search_area">
-           
-               <input type="text" class="top_menu_search_input" id="top_search_input" name="searchKeyword" placeholder="검색어를 입력하세요">
-               <input type="submit" class="top_menu_search_input" id="top_search_icon" value="" />
-           </div>
-           <input type="hidden" id="searchKeyword_id" name="user_id" value="${sessionScope.user_id}"/>
-      	</form>
-     </div>
 	
-	
-<!-- nav 영역 -->	
+	<!-- nav 영역 -->	
 	<div class="nav_area">	
 	<div class="dropmenu">
 			<ul class="dropcategory">
@@ -100,7 +99,7 @@ $(document).ready(function(){
 			</ul>
 		</div>
 	</div>
-	<!-- nav 영역 끝 -->		
+	<!-- nav 영역 끝 -->	
 
 
 </body>

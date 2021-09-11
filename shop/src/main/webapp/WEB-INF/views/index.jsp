@@ -14,7 +14,7 @@
    <!-- BX Slider -->
    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
    
-    <script type="text/javascript">
+    <script>
        $(document).ready(function() {
           $(".slider").bxSlider({
              auto : true,
@@ -27,13 +27,13 @@
        });
     </script>
    
-   <style type="text/css">
-   h2{
-   margin:auto;
-   }
-   h3{
-   margin:auto;
-   }
+   <style>
+	   h2{
+	   margin:auto;
+	   }
+	   h3{
+	   margin:auto;
+	   }
    </style>
 </head>
 <body>
@@ -43,31 +43,32 @@
    <!-- top 영역 끝 -->
    
    
-   
-   <div class="main_banner_container">
-       <div class="bx-viewport">
-          <ul class="slider">
-            <li>
-               <img class="slider_img" src="${pageContext.request.contextPath }/assets/img/img11.jpg"/>
-            </li>
-            
-            <li>
-               <img class="slider_img" src="${pageContext.request.contextPath }/assets/img/img12.jpg" />
-            </li>
-                        
-            <li>
-               <img class="slider_img" src="${pageContext.request.contextPath }/assets/img/img13.jpg" />
-            </li>
-            
-            <li>
-               <img class="slider_img" src="${pageContext.request.contextPath }/assets/img/img14.jpg" />
-            </li>
-            
-            <li>
-               <img class="slider_img" src="${pageContext.request.contextPath }/assets/img/img15.jpg" />
-            </li>
-         </ul>
-       </div>
+   <div>
+	   <div class="main_banner_container">
+	       <div class="bx-viewport">
+	          <ul class="slider">
+	            <li>
+	               <img class="slider_img" src="${pageContext.request.contextPath }/assets/img/img11.jpg"/>
+	            </li>
+	            
+	            <li>
+	               <img class="slider_img" src="${pageContext.request.contextPath }/assets/img/img12.jpg" />
+	            </li>
+	                        
+	            <li>
+	               <img class="slider_img" src="${pageContext.request.contextPath }/assets/img/img13.jpg" />
+	            </li>
+	            
+	            <li>
+	               <img class="slider_img" src="${pageContext.request.contextPath }/assets/img/img14.jpg" />
+	            </li>
+	            
+	            <li>
+	               <img class="slider_img" src="${pageContext.request.contextPath }/assets/img/img15.jpg" />
+	            </li>
+	         </ul>
+	       </div>
+	    </div>
     </div>
     <!-- 배너 슬라이드 끝 -->
       
