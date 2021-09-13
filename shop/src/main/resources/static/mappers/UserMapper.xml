@@ -22,7 +22,7 @@
 		<result property="user_type" column="type"/>
 	</resultMap>
 
-	<!-- 유저 회원가입 -->
+	<!-- 유저 회원가입 --> 
 	<insert id="insertUser" parameterType="com.example.demo.cook_user.User">
 		INSERT INTO cook_user VALUES (
 			#{user_id},

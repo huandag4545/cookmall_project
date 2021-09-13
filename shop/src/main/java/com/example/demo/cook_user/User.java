@@ -2,9 +2,10 @@ package com.example.demo.cook_user;
 
 import java.sql.Date;
 
+
 public class User {
 
-	private String user_id;
+	private String user_id; 
 	private int user_num;
 	private String user_pwd;
 	private String user_name;
