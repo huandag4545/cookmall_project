@@ -44,5 +44,8 @@
 	</div>
 
 
+	<!-- footer 영역 시작 -->
+	<c:import url="${pageContext.request.contextPath }/inc/footer.jsp" />
+	<!-- footer 끝 -->
 </body>
 </html>
