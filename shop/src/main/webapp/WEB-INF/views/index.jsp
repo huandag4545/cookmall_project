@@ -77,7 +77,6 @@
       <div class="scale"><li><a href="#"><img class="sug1" src="/assets/img/sug1.jpg" /></a><hr/>닭가슴살 샐러드<br></li></div>
       <div class="scale"><li><a href="#"><img class="sug2" src="/assets/img/sug2.jpg"/></a><hr/>새우파스타 샐러드<br></li></div>
       <div class="scale"><li><a href="#"><img class="sug3" src="/assets/img/sug3.jpg"/></a><hr/>토마토 바질 파스타<br></li>   </div>
-
    </ul>
    </div>
    

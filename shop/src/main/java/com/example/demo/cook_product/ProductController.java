@@ -6,7 +6,9 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import org.apache.catalina.connector.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -16,12 +18,13 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.context.annotation.RequestScope;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.cook_admin.AdminService;
 import com.example.demo.cook_admin.Category;
+import com.example.demo.cook_review.Review;
+import com.example.demo.cook_review.ReviewService;
 import com.example.demo.cook_user.User;
 import com.example.demo.cook_user.UserService;
 
@@ -37,6 +40,9 @@ public class ProductController {
 	
 	@Autowired
 	private UserService user_service;
+	
+	@Autowired
+	private ReviewService review_service;
 	
 	public static String basePath = "C:\\cookimg\\";
 
@@ -130,7 +136,7 @@ public class ProductController {
 		}
 
 		@RequestMapping(value = "/product/productdetail")
-		public ModelAndView productDetail(@RequestParam(value = "p_num") int p_num) {
+		public ModelAndView productDetail(@RequestParam(value = "p_num") int p_num,HttpServletRequest req) {
 			ModelAndView mav = new ModelAndView("/product/product_detail");
 			
 			Product p = product_service.selectByNum(p_num);
@@ -148,8 +154,16 @@ public class ProductController {
 					System.out.println(files[j]);
 				}
 			}
+			//제품상세내역 출력
 			mav.addObject("p", p);
+			// 리뷰 출력
+			ArrayList<Review> reviews = (ArrayList<Review>)review_service.selectAllReview(p_num);		
+			System.out.println("reviews : " + reviews.toString());
 
+			
+			mav.addObject("reviews",reviews);
+			
+			
 			return mav;
 		}
 

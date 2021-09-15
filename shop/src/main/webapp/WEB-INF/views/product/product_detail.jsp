@@ -32,20 +32,98 @@
 
 		$("#prod_quantity").change(function() {
 			var value = $("#prod_quantity option:selected").val();
-			var price = ${p.p_price};
+			var price = $
+			{
+				p.p_price
+			}
+			;
 			var total = value * price;
 			$("#total_price").html(total);
 		});
-		
-		$("#order_btn").click(function(){
+
+		$("#order_btn").click(function() {
 			var value = $("#prod_quantity option:selected").val();
-			if(value==0){
+			if (value == 0) {
 				alert('수량을 입력해주세요');
 				return false;
 			}
 		});
+
+		$("#review_btn").click(function() {
+
+			var user_id = '${sessionScope.user_id}';
+			if (user_id == null || user_id == "") {
+				alert("로그인 하세요");
+			} else {
+				
+				$.ajax({
+					type : 'POST',
+					url : '/review/insertReview',
+					data : $("#rev_form").serialize(),
+					success : function(result) {
+						if (result.success) {
+							alert(result.message);
+							location.reload();
+						} else {
+							alert("작성 실패");
+						}
+
+					}
+				});
+			}
+		});
+		
+// 		$(".rev_del").click(function(){
+// 			if(confirm("삭제하시겠습니까?") == true){
+				
+// 				// json 으로 전송 가능하게 파라미터를 만들어 준다.
+// 				var param = {
+// 					"review_num" : $(".rev_del").attr("review_num")
+// 				}
+// 				$.ajax({
+// 					type : 'POST',
+// 					url : '/review/deleteReview',
+// 					data : param, // json 으로 만들어진 param 이라는 변수를 컨트롤러로 전송한다.
+// 					success : function(result){
+// 						if (result.success) {
+// 							alert(result.message);
+// 							location.reload();
+// 						} else {
+// 							alert("삭제 실패");
+// 						}
+// 					}
+// 				});
+// 			}else{
+// 				return;
+// 			}
+// 		});
+		
+		
+		
 		
 	});
+	
+	function reviewDelete(reviewNum) {
+		
+		if(confirm("삭제하시겠습니까?")){
+			$.ajax({
+				type : 'POST',
+				url : '/review/deleteReview',
+				data : {
+					"review_num" : reviewNum // json 으로 전송 가능하게 파라미터를 만들어 준다.
+				},
+				// json 으로 만들어진 param 이라는 변수를 컨트롤러로 전송한다.
+				success : function(result){
+					if (result.success) {
+						alert(result.message);
+						location.reload();
+					} else {
+						alert("삭제 실패");
+					}
+				}
+			});
+		}
+	}
 </script>
 </head>
 <body>
@@ -110,11 +188,10 @@
 				<!-- 관리자 로그인시 버튼 -->
 				<div class="btn_area">
 					<c:if test="${sessionScope.user_type == 2 }">
-						<form action="${pageContext.request.contextPath}/product/editForm"
-							method="post" id="f1">
-							<input type="hidden" name="p_num" value="${p.p_num }"> <input
-								type="submit" value="수정" class="btn"> <input
-								type="button" id="del" class="btn" value="삭제">
+						<form action="${pageContext.request.contextPath}/product/editForm" method="post" id="f1">
+							<input type="hidden" name="p_num" value="${p.p_num }">
+							<input type="submit" value="수정" class="btn">
+							<input type="button" id="del" class="btn" value="삭제">
 						</form>
 					</c:if>
 				</div>
@@ -125,16 +202,58 @@
 				<c:if test="${empty file0 }">
 			등록된 이미지가 없습니다.</c:if>
 				<c:if test="${not empty file0 }">
-					<img id="Infoimg" src="${pageContext.request.contextPath }/productImg?fname=${file3 }&p_num=${p.p_num }">
+					<img id="Infoimg"
+						src="${pageContext.request.contextPath }/productImg?fname=${file3 }&p_num=${p.p_num }">
 				</c:if>
 			</div>
 
 		</div>
-		<c:if test="${sessionScope.user_id != null }">
-			<div class="reviewBox">
-				<form ac></form>
+		<div class="reviewBox">
+			<div class="review_title">리뷰</div>
+			<div class="review_form_area">
+				<form method="post" id="rev_form">
+					<input type="hidden" name="writer_id" id="writer_id" value="${sessionScope.user_id }">
+					<input type="hidden" name="product_num" id="product_num" value="${p.p_num }">
+					<select name="review_score" id="rev_box">
+						<option value="1" autofocus="autofocus">★☆☆☆☆</option>
+						<option value="2">★★☆☆☆</option>
+						<option value="3">★★★☆☆</option>
+						<option value="4">★★★★☆</option>
+						<option value="5">★★★★★</option>
+					</select>
+					<textarea id="review_content" id="review_content" name="review_content"></textarea>
+					<input type="button" value="작성" id="review_btn">
+				</form>
 			</div>
-		</c:if>
+			<div class="review_list">
+				<form id="review_form">
+					<table class="review_table">
+						<tr id="review_box">
+							<th>덧글번호</th>
+							<th>별점</th>
+							<th>작성자</th>
+							<th>작성내용</th>
+							<th>작성시간</th>
+						</tr>
+						<c:forEach var="r" items="${reviews }">
+						
+							<tr>
+								<td>${r.review_num }</td>
+								<td>${r.review_score }</td>
+								<td>${r.writer_id }</td>
+								<td>${r.review_content }</td>
+								<td>${r.review_date }
+								<c:if test="${r.writer_id == sessionScope.user_id }">
+									<input class="rev_del" type="button" onclick="reviewDelete(${r.review_num })" value='삭제'">
+								</c:if>
+								</td>
+							</tr>
+						
+						</c:forEach>
+					</table>
+				</form>
+			</div>
+		</div>
 	</div>
 	<!-- footer 영역 시작 -->
 	<c:import url="${pageContext.request.contextPath }/inc/footer.jsp" />

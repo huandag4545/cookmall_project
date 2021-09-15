@@ -1,6 +1,7 @@
 package com.example.demo.cook_review;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,10 @@ public class ReviewService {
 		mapper.insertReview(r);
 	}
 	
+	public void insertReviewMap(Map param) {
+		mapper.insertReviewMap(param);
+	}
+	
 	public void updateReview(Review r) {
 		mapper.updateReview(r);
 	}
@@ -23,8 +28,8 @@ public class ReviewService {
 		mapper.deleteReview(review_num);
 	}
 	
-	public List selectAllReview() {
-		return mapper.selectAllReview();
+	public List selectAllReview(int product_num) {
+		return mapper.selectAllReview(product_num);
 	}
 	
 	public List selectReviewByProductNum(int product_num) {
