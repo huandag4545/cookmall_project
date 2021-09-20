@@ -42,6 +42,7 @@
 			<tr>
 				<td class="content">
 					<textarea name="rl_content" placeholder="내용을 입력하세요."></textarea>
+					<input type="hidden" name="rl_id" value="${sessionScope.user_id}"/>
 				</td>
 			</tr>
 

@@ -6,9 +6,7 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
-import org.apache.catalina.connector.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -82,7 +80,7 @@ public class ProductController {
 			saveImg(num, p.getP_img2());
 			saveImg(num, p.getP_img3());
 			saveImg(num, p.getP_infoimg());
-			
+			// 테스트 
 			System.out.println(p.getP_name());
 			System.out.println(p.getP_info());
 			System.out.println(p.getP_price());
@@ -91,8 +89,8 @@ public class ProductController {
 			System.out.println(p.getCa2_num());
 			return "/product/addsucess";
 		}
-
-		// product_allList 이동 등록한 제품의 리스트들을 출력
+//
+		// 전체 리스트 출력 (수정 및 등록시 한눈에볼수있는 관리자만의 리스트)
 		@RequestMapping(value = "/product/prodlist")
 		public ModelAndView allList(Product p) {
 			ModelAndView mav = new ModelAndView("/product/product_list");
@@ -135,16 +133,20 @@ public class ProductController {
 			return result;
 		}
 
+		//제품 상세페이지 이동
 		@RequestMapping(value = "/product/productdetail")
 		public ModelAndView productDetail(@RequestParam(value = "p_num") int p_num,HttpServletRequest req) {
 			ModelAndView mav = new ModelAndView("/product/product_detail");
 			
 			Product p = product_service.selectByNum(p_num);
+			
+			//대분류 중분류 이름가져오기
 			Category c1 = admin_service.selectCategory(p.getCa1_num(), 1);
 			Category c2 = admin_service.selectCategory(p.getCa2_num(), 2);
 			mav.addObject("c1",c1);
 			mav.addObject("c2",c2);
 			
+			//이미지 가져오기
 			String path = basePath + p.getP_num() + "\\";
 			File imgDir = new File(path);
 			if (imgDir.exists()) {
@@ -166,7 +168,8 @@ public class ProductController {
 			
 			return mav;
 		}
-
+		
+		//제품삭제
 		@RequestMapping(value = "/product/proddel")
 		public String del(@RequestParam(value = "p_num") int p_num) {
 			product_service.delete(p_num);
@@ -184,6 +187,7 @@ public class ProductController {
 			return "/product/delsucess";
 		}
 
+		//제품수정 폼으로 이동
 		@RequestMapping(value = "/product/editForm")
 		public ModelAndView editForm(@RequestParam("p_num") int p_num) {
 			Product p = product_service.selectByNum(p_num);
@@ -192,7 +196,8 @@ public class ProductController {
 			return mav;
 
 		}
-
+		
+		//제품수정
 		@RequestMapping(value = "/product/productedit")
 		public String edit(Product p, @RequestParam(value = "p_num") int p_num,HttpServletRequest req) {
 			String path = basePath + p_num + "\\";
@@ -215,12 +220,13 @@ public class ProductController {
 			return "/product/editsucess";
 		}
 
-		// 이름으로 검색한 리스트 출력 ****마지막에 시간이남는다면 추가***
+		// 이름으로 검색한 리스트 출력  search List
 		@RequestMapping(value = "/product/nameList")
 		public ModelAndView nameList(@RequestParam(value = "p_name") String p_name, Product p) {
 			ModelAndView mav = new ModelAndView("/search/search");
 			System.out.println(p_name);
-			ArrayList<Product> prodlist = (ArrayList<Product>) product_service.SearchList(p_name);
+			ArrayList<Product> prodlist = (ArrayList<Product>)product_service.SearchList(p_name);
+			System.out.println("프로드리스트"+prodlist);
 			ArrayList<String> fileList = new ArrayList<String>();
 			String path = "";
 			for (int i = 0; i < prodlist.size(); i++) {
@@ -228,6 +234,7 @@ public class ProductController {
 				path = basePath + p.getP_num() + "\\";
 				File imgDir = new File(path);
 				mav.addObject("path" + i, path);
+				System.out.println("p.Num="+p.getP_num());
 
 				if (imgDir.exists()) {
 					String[] files = imgDir.list();
@@ -264,6 +271,7 @@ public class ProductController {
 			return mav;
 		}
 	
+		//관리자 페이지에서 상품 이름으로 검색하여 관리할수있는부분
 	 @RequestMapping(value= "/product/searchKeyword")
 	    public ModelAndView searchKeywordResult(@RequestParam(value = "user_id") String user_id, 
 	    										@RequestParam(value = "searchKeyword") String searchKeyword) {
@@ -325,7 +333,9 @@ public class ProductController {
 
 	 @RequestMapping("/product/cate1_prodlist")
 	 public ModelAndView cate1_prodlist(@RequestParam ("ca1_num")int ca1_num,Product p) {
-			ModelAndView mav = new ModelAndView("/product/product_list");
+			System.out.println(ca1_num);
+		 	
+		 	ModelAndView mav = new ModelAndView("/product/product_list");
 			ArrayList<Product> allprodlist = (ArrayList<Product>)product_service.Cate1List(ca1_num);
 			ArrayList<String> fileList = new ArrayList<String>();
 			String path = "";
@@ -340,8 +350,12 @@ public class ProductController {
 				if (imgDir.exists()) {
 					String[] files = imgDir.list();
 					fileList.add(files[0]);
+					System.out.println(files[0]);
 				}
+				System.out.println("for int i ==> " + i);
 			}
+		
+			
 			mav.addObject("allprodlist", allprodlist);
 			mav.addObject("fileList", fileList);
 			return mav;

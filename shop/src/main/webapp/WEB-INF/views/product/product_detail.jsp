@@ -8,6 +8,8 @@
 <title>Insert title here</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/assets/css/product/productDetail(css).css?after">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/assets/css/review/review.css?afte">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 <script>
@@ -32,11 +34,7 @@
 
 		$("#prod_quantity").change(function() {
 			var value = $("#prod_quantity option:selected").val();
-			var price = $
-			{
-				p.p_price
-			}
-			;
+			var price = ${p.p_price};
 			var total = value * price;
 			$("#total_price").html(total);
 		});
@@ -50,8 +48,19 @@
 		});
 
 		$("#review_btn").click(function() {
-
+			var rev_box = $("#rev_box option:selected").val();
+			var review_content = $("#review_content").val();
 			var user_id = '${sessionScope.user_id}';
+			
+			if(review_content == ""){
+				alert("리뷰를 입력해주세요.");
+				$("#review_content").val("");
+				return false;
+			}else if(rev_box==0){
+				alert('별점을 입력해주세요');
+				return false;
+			}
+			
 			if (user_id == null || user_id == "") {
 				alert("로그인 하세요");
 			} else {
@@ -73,33 +82,7 @@
 			}
 		});
 		
-// 		$(".rev_del").click(function(){
-// 			if(confirm("삭제하시겠습니까?") == true){
-				
-// 				// json 으로 전송 가능하게 파라미터를 만들어 준다.
-// 				var param = {
-// 					"review_num" : $(".rev_del").attr("review_num")
-// 				}
-// 				$.ajax({
-// 					type : 'POST',
-// 					url : '/review/deleteReview',
-// 					data : param, // json 으로 만들어진 param 이라는 변수를 컨트롤러로 전송한다.
-// 					success : function(result){
-// 						if (result.success) {
-// 							alert(result.message);
-// 							location.reload();
-// 						} else {
-// 							alert("삭제 실패");
-// 						}
-// 					}
-// 				});
-// 			}else{
-// 				return;
-// 			}
-// 		});
-		
-		
-		
+
 		
 	});
 	
@@ -124,6 +107,8 @@
 			});
 		}
 	}
+	
+
 </script>
 </head>
 <body>
@@ -175,7 +160,7 @@
 						</select>
 					</div>
 					<div id="total_price_box">
-						총 합계:<span id="total_price"></span>원
+						총 합계:<span id="total_price"> </span>원
 					</div>
 					<!-- 유저 로그인시 버튼-->
 					<div class="btn_area">
@@ -221,7 +206,7 @@
 						<option value="4">★★★★☆</option>
 						<option value="5">★★★★★</option>
 					</select>
-					<textarea id="review_content" id="review_content" name="review_content"></textarea>
+					<textarea id="review_content" id="review_content" name="review_content" rows="7" style="width: -webkit-fill-available;"></textarea>
 					<input type="button" value="작성" id="review_btn">
 				</form>
 			</div>
@@ -229,7 +214,7 @@
 				<form id="review_form">
 					<table class="review_table">
 						<tr id="review_box">
-							<th>덧글번호</th>
+							<th>댓글번호</th>
 							<th>별점</th>
 							<th>작성자</th>
 							<th>작성내용</th>

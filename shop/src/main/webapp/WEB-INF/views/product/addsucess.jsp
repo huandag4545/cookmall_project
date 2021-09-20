@@ -11,7 +11,7 @@
 <!-- top 영역 시작 -->
 	<c:import url="${pageContext.request.contextPath }/inc/topbar.jsp" />
 	<!-- top 영역 끝 -->
-	<div>제품추가가 완료되었습니다.</div>
+	<div style="font-size: 20px;">제품추가가 완료되었습니다.</div>
 	<a href="${pageContext.request.contextPath }/product/prodlist">완료</a></div>
 	<!-- footer 영역 시작 -->
 	<c:import url="${pageContext.request.contextPath }/inc/footer.jsp" />

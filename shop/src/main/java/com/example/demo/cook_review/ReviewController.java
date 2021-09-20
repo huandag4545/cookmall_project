@@ -40,17 +40,9 @@ public class ReviewController {
 	public Map<String, Object> insertReview(Review r, @RequestParam(required = false) Map param) {
 		System.out.println("param ==> " + param);
 		
-//		System.out.println("리뷰 컨트롤러 ============== " + r.toString());
-		
-//		review_Service.insertReviewMap(param);
 		review_Service.insertReview(r);
 		
-//		System.out.println("테스트");
-//		System.out.println(r.getReview_content());
-//		System.out.println(r.getWriter_id());
-//		System.out.println(r.getReview_num());
-//		System.out.println(r.getReview_date());
-		
+
 		
 		Map<String, Object> result = new HashMap<>();
 		result.put("success", true);

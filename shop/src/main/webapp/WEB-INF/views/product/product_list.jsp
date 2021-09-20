@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="http://code.jquery.com/jquery.min.js"></script>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/assets/css/product/product_list(css).css">
 
@@ -13,7 +14,12 @@
 <body>
 
 	<!-- top 영역 시작 -->
-	<c:import url="${pageContext.request.contextPath }/inc/topbar.jsp" />
+	<c:if test="${sessionScope.user_type == 1 || empty sessionScope.user_id }">
+		<c:import url="${pageContext.request.contextPath }/inc/topbar.jsp" />
+    </c:if>
+    <c:if test="${sessionScope.user_type == 2 }">
+		<c:import url="${pageContext.request.contextPath }/inc/adminTopbar.jsp" />
+    </c:if>
 	<!-- top 영역 끝 -->
 
 
@@ -35,16 +41,16 @@
 					<div class="empty">상품이 없습니다.</div>
 				</c:if>
 				<c:if test="${not empty allprodlist }">
-					<c:forEach items="${allprodlist }" var="i" varStatus="status">
+					<c:forEach items="${allprodlist }" var="p" varStatus="status">
 						<div class="prod_box">
-							<a class="list_a" href="${pageContext.request.contextPath }/product/productdetail?p_num=${i.p_num}">
-							<img class="prod_img" src="${pageContext.request.contextPath }/productImg?fname=${fileList[status.index]}&p_num=${i.p_num}">
+							<a class="list_a" href="${pageContext.request.contextPath }/product/productdetail?p_num=${p.p_num}">
+							<img class="prod_img" src="${pageContext.request.contextPath }/productImg?fname=${fileList[status.index]}&p_num=${p.p_num}">
 							</a>
 
-							<p id="prod_name"><a href="${pageContext.request.contextPath }/product/productdetail?p_num=${i.p_num}">${i.p_name }</a></p>
+							<p id="prod_name"><a href="${pageContext.request.contextPath }/product/productdetail?p_num=${p.p_num}">${p.p_name }</a></p>
 
-							<p id="prod_price">${i.p_price }원</p>
-							<p id="prod_info">${i.p_info }</p>
+							<p id="prod_price">${p.p_price }원</p>
+							<p id="prod_info">${p.p_info }</p>
 						</div>
 					
 					</c:forEach>

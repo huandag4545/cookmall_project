@@ -38,16 +38,14 @@ $(document).ready(function(){
 				<ul>
 					<li><a class="list" href="${pageContext.request.contextPath }/user/login"> 로그인 </a></li>
 	                <li><a class="list" href="${pageContext.request.contextPath }/user/signup_agree"> 회원가입 </a></li>
-	               <%--  <li><a class="list" href="${pageContext.request.contextPath }/review/reviewForm"> 리뷰 </a></li> --%>
+	            
 				</ul>
 			</c:if>
 			
 			<c:if test="${not empty sessionScope.user_id }">
         		<ul>
 	        		<c:if test="${sessionScope.user_type == 1 }">
-		                <li><a class="list" href="/order/orderList"> ${sessionScope.user_nickname}님 </a></li>
-		                <li><a class="list" href="${pageContext.request.contextPath }/notice/notice_board?user_id=${sessionScope.user_id}"> 마이페이지 </a></li>
-		                <li><a class="list" href="${pageContext.request.contextPath }/product/prodlist"> 장바구니 </a></li>
+		                <li><a class="list" href="${pageContext.request.contextPath }/user/user_profile"> ${sessionScope.user_nickname}님 </a></li>
 		                <li><a class="list"  href="${pageContext.request.contextPath }/user/logout" onClick="alert('로그아웃 되었습니다')"> 로그아웃 </a></li>               
 		                <!--  -->
 	        		</c:if>
@@ -92,10 +90,11 @@ $(document).ready(function(){
 		</div>
 		<div id="ul_box">
 			<ul class="nav_ul">
+			<li class="nav_li"><a class="nav_li_link" href="${pageContext.request.contextPath }/product/prodlist">상품목록</a></li>
 				<li class="nav_li"><a class="nav_li_link" href="${pageContext.request.contextPath }/recipelist/recipelist_board">레시피</a></li>
 				<li class="nav_li"><a class="nav_li_link" href="${pageContext.request.contextPath }/notice/notice_board">공지사항</a></li>
-				<li class="nav_li"><a class="nav_li_link" href="${pageContext.request.contextPath }/qna/qna_list">고객센터</a></li>
-				<li class="nav_li"><a class="nav_li_link">자유게시판</a></li>
+				<li class="nav_li"><a class="nav_li_link" href="${pageContext.request.contextPath }/qna/mav_qna_list?qna_type=1">문의사항</a></li>
+				
 			</ul>
 		</div>
 	</div>

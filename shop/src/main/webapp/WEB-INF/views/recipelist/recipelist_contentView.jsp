@@ -12,6 +12,7 @@
 	
 	<!-- JS -->
 	<script src="${pageContext.request.contextPath }/assets/js/recipelist/recipelist_contentView.js"></script>
+	
 </head>
 <body>
 	
@@ -28,7 +29,7 @@
 
 	<c:import url="${pageContext.request.contextPath }/recipelist/Board"></c:import>
 	
-	<form id="contentForm" action="${pageContext.request.contextPath }">
+	<form id="contentForm" action="${pageContext.request.contextPath }" style="display: table; margin-left: auto; margin-right: auto;">
 		<input type="hidden" name="rl_num" value="${r.rl_num }">
 		<table>
 			<tr>
@@ -42,19 +43,20 @@
 
 			<tr>
 				<td class="content" colspan="3">
+				<div>
 					<c:if test="${sessionScope.user_type == 1 || 2 }">
-						<textarea name="rl_content">${r.rl_content}</textarea>
+						<textarea name="rl_content" class="rlc" style="width: 1253px; height: 276px;">${r.rl_content}</textarea>
 					</c:if>
-					
+				</div>
 				</td>
 			</tr>
 
 			<tr>
 				<td class="btn_td" colspan="3">
-					<c:if test="${sessionScope.user_type == 1 || 2 }">
+					<c:if test="${sessionScope.user_id == r.rl_id || sessionScope.user_type ==2 }">
 						<input class="del_btn" type="button" id="del" value="삭제">
 						<input class="edit_btn" type="button" id="edit" value="수정">
-					</c:if>
+					</c:if>	
 						<input class="list_btn" type="button" id="list" onClick="history.back();" value="목록으로">
 				</td>
 			</tr>

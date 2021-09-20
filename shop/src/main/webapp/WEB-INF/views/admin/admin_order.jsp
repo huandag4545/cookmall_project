@@ -17,33 +17,7 @@
 
 	<!-- 관리자 Topbar 영역 -->
 	<!-- 관리자 Topbar 영역 -->
-	<div class="admin_topbar_container">
-		<div class="admin_topbar_area">
-			<div class="admin_main">
-				<!-- 클릭 시 관리자 메인(홈페이지 정보)로 이동-->
-				<span class="mm"> <a href="#"> 관리자 페이지 </a>
-				</span>
-				<span>
-					<ul>
-						<!-- 클릭 시 정보수정창으로 이동  -->
-						<li><a href="#"> 관리자 ${sessionScope.user_Id} 님 </a></li>
-
-						<li>
-							<!-- 클릭 시 SellerRe(user화면) index로 이동 --> <a
-							href="${pageContext.request.contextPath }/index"> CookingMall
-						</a>
-						</li>
-
-						<li>
-							<!-- 클릭 시 로그아웃 후 index로 이동 --> <a
-							href="${pageContext.request.contextPath }/admin/logout"
-							onClick="alert('로그아웃 되었습니다');"> 로그아웃</a>
-						</li>
-					</ul>
-				</span>
-			</div>
-		</div>
-	</div>
+	<c:import url="${pageContext.request.contextPath }/inc_adminTopbar.jsp"/>
 
 
 		<div class="admin_list_container">

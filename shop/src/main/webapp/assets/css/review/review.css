@@ -7,33 +7,29 @@ html {
     margin-left: auto;
     margin-right: auto;
     margin-top: 5rem;
-
+    margin-bottom :100px;
     padding-top: 1rem;
     padding-left: 1rem;
     padding-right: 1rem;
     padding-bottom: 1rem;
-
-    width: 100%;
+    width: 1300px;
     height: 100%;
-
     border: 1px solid #aaaaaa;
     border-radius: 2rem;
-
     background-color: #ffffff;
-
     text-align: center;
-    font-size: 2.5rem;
+    
 }
 
 .review_view_table {
     margin-left: auto;
     margin-right: auto;
     margin-top: 2rem;
-    margin-bottom: 15rem;
+    margin-bottom: 30px;
 
     padding: 1rem 1rem 1rem 1rem;
 
-    width: 100%;
+    width: 1300px;
     height: 100%;
 
     border: 1px solid #aaaaaa;
@@ -42,7 +38,6 @@ html {
     background-color: #ffffff;
 
     text-align: center;
-    font-size: 2.5rem;
 }
 
 .review_writing_td {

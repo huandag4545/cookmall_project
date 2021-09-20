@@ -15,8 +15,6 @@
 </head>
 <body>
 	
-	<c:import url="${pageContext.request.contextPath }/notice/notice_board"></c:import>
-	
 	<form id="contentForm" action="${pageContext.request.contextPath }">
 		<input type="hidden" name="notice_num" value="${n.notice_num }">
 		<table>

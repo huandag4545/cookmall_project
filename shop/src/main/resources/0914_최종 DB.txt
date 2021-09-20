@@ -1,0 +1,169 @@
+DROP SEQUENCE seq_cook_cart;
+DROP SEQUENCE seq_cook_user;
+DROP SEQUENCE seq_cook_Product;
+DROP SEQUENCE seq_cook_cart;
+DROP SEQUENCE seq_cook_qna;
+DROP SEQUENCE seq_cook_review;
+DROP SEQUENCE seq_cook_category1;
+DROP SEQUENCE seq_cook_category2;
+DROP SEQUENCE seq_cook_notice;
+DROP SEQUENCE seq_cook_recipe_list;
+
+drop table cook_user cascade CONSTRAINTS;
+drop table cook_Product cascade CONSTRAINTS;
+drop table cook_cart;
+drop table cook_qna cascade CONSTRAINTS;
+drop table cook_review;
+drop table cook_category1;
+drop table cook_category2;
+drop table notice;
+drop table cook_recipe_list cascade CONSTRAINTS;
+
+
+----------------------------------------------------------------
+--사용자 테이블--------------------------------------------------
+create table cook_user(
+id varchar2(20) primary key,
+num number,
+pwd varchar2(20) not null,
+name varchar2(20),
+email varchar2(50),
+tel varchar2(20),
+nickname  varchar2(50) not null,
+postcode varchar2(50) not null,
+addr1 varchar2(255) not null,
+addr2 varchar2(255) not null,
+type number
+);
+
+create sequence seq_cook_user;
+
+select * from cook_PRODUCT;
+
+----- 관리자 계정 생성 SQL-----------------------------------------------
+insert into cook_user values ('admin', seq_cook_user.nextval, 'admin', 'admin_name',  'admin@naver.com',  '01011111111', 'admin_nick','14154', '동구 판교', '판교역 1번출구',2);
+
+commit;
+
+
+--카테고리 테이블 대분류-중분류 까지--------------------------------------------------------------
+create table cook_category1(
+ca_num number primary key,
+ca_name varchar2(50)
+);
+
+create sequence seq_cook_category1;
+
+
+create table cook_category2(
+ca_num number primary key,
+ca_name varchar2(50),
+parent_category_num number references cook_category1(ca_num) on delete cascade
+);
+
+create sequence seq_cook_category2;
+
+
+--물품 테이블-------------------------------------------------------
+create table cook_Product(
+p_num number primary key,
+p_name varchar2(50) not null,
+p_price number not null,
+p_info            varchar2(500),
+ca1_num         number         references cook_category1(ca_num),
+ca2_num         number         references cook_category2(ca_num),
+reg_date      date,
+result number default 0
+);
+
+select * from cook_product;
+create sequence seq_cook_product;
+
+-----주문 테이블-------------------------------------------------------
+create table cook_order(
+    o_num number primary key,
+    o_date date,
+    o_quantity number,
+    o_postcode varchar2(50),
+    o_addr1 varchar2(200),
+    o_addr2 varchar2(200),
+    p_num number references cook_product(p_num) on delete cascade,
+    user_id varchar2(40) references cook_user(id) on delete cascade,
+    result number default 0
+);
+
+create sequence seq_cook_order;
+
+--장바구니 테이블------------------------------------------------------------
+create table cook_cart(
+c_num number primary key,
+user_id varchar2(20) references cook_user(id) on delete cascade,
+product_num number references cook_Product(p_num) on delete cascade
+);
+
+create sequence seq_cook_cart;
+
+select * from cook_cart;
+ DELETE
+      FROM   cook_cart
+      WHERE   product_num = 3 and user_id = 'user';
+
+--Q&A 테이블-----------------------------------------------------------
+
+Create table cook_qna(
+qa_num number primary key,
+qa_title varchar2(100) ,
+qa_content varchar2(1000),
+qa_date date,
+qa_type number
+);
+
+create sequence seq_cook_qna;
+
+--문의하기 답글 테이블---------------------------------------------------
+Create table cook_reqna(
+  rqa_num number primary key,
+  rqa_title varchar2(100),
+  rqa_content varchar2(1000),
+  rqa_date date,
+  parent_qa_num number references cook_qna(qa_num) on delete cascade
+);
+create sequence seq_cook_reqna;
+
+
+--리뷰테이블--------------------------------------------------------------
+create table cook_review(
+review_num number primary key,
+writer_id  varchar2(50) references cook_user(id) on delete cascade,
+review_content varchar2(255),
+product_num number references cook_Product(p_num) on delete cascade,
+review_date date
+);
+
+create sequence seq_cook_review;
+
+
+
+--공지사항 테이블---------------------------------------------------------------
+
+create table cook_notice(
+   notice_num number primary key,
+   notice_title varchar2(50) not null,
+   notice_content varchar2(500) not null,
+   notice_date date
+  
+);
+
+create sequence seq_cook_notice;
+
+--레시피 테이블-------------------------------------------------------------------
+create table cook_recipe_list (
+rl_num number primary key,
+rl_title varchar2(50) not null,
+rl_content varchar2(500) not null,
+rl_date date,
+rl_id references cook_user(id) on delete cascade
+);
+select * from cook_recipe_list;
+create sequence seq_cook_recipe_list;
+--------------------------------------------------------------------

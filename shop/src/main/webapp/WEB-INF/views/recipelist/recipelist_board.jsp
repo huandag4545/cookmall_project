@@ -6,8 +6,8 @@
 <head>
 	<meta charset="UTF-8">
 	<!-- CSS -->
-	<link rel="stylesheet" href="${pageContext.request.contextPath }/assets/css/recipelist/recipelist_Board.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath }/assets/css/topbar(css).css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath }/assets/css/recipelist/recipelist_Board.css?after">
+	<link rel="stylesheet" href="${pageContext.request.contextPath }/assets/css/topbar(css).css?after">
 
 	<!-- Jquery -->
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -45,7 +45,7 @@
 					<tr>
 						<td> ${status.count} </td>
 						<td>
-							<a class="link" href="${pageContext.request.contextPath }/recipelist/recipelist_contentView?rl_num=${r.rl_num}">${r.rl_title}</a>
+							<a class="link" href="${pageContext.request.contextPath }/recipelist/recipelist_ContentView?rl_num=${r.rl_num}">${r.rl_title}</a>
 						</td>
 						<td> ${r.rl_date } </td>
 					</tr>

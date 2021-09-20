@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/assets/css/search/search(css).css?after">
+<script src="http://code.jquery.com/jquery.min.js"></script>
 </head>
 <body>
 
@@ -31,11 +32,22 @@
 					</tr>
 					<c:forEach items="${prodlist }" var="p" varStatus="status">
 						<tr id="list_tr">
-							<td class="prod_num"><a class="list_a" href="${pageContext.request.contextPath }/product/productdetail?p_num=${p.p_num}">${p.p_num }</a></td>
-							<td class="prod_img"><a class="list_a" href="${pageContext.request.contextPath }/product/productdetail?p_num=${p.p_num}">
-							<img class="imgs" src="${pageContext.request.contextPath }/productImg?fname=${fileList[status.index]}&p_num=${p.p_num}"></a></td>
-							<td class="prod_name"><a class="list_a" href="${pageContext.request.contextPath }/product/productdetail?p_num=${p.p_num}">${p.p_name }&nbsp;&nbsp;<span id="prod_info">&lt;원산지 : ${p.p_info } &gt;</span></a></td>
-							<td class="prod_price"><a class="list_a" href="${pageContext.request.contextPath }/product/productdetail?p_num=${p.p_num}">${p.p_price }원</a></td>
+							<td class="prod_num">
+								<a class="list_a" href="${pageContext.request.contextPath }/product/productdetail?p_num=${p.p_num}">${p.p_num }</a>
+							</td>
+							<td class="prod_img">
+								<a class="list_a" href="${pageContext.request.contextPath }/product/productdetail?p_num=${p.p_num}">
+									<img class="imgs" src="${pageContext.request.contextPath }/productImg?fname=${fileList[status.index]}&p_num=${p.p_num}">
+								</a>
+							</td>
+							<td class="prod_name">
+								<a class="list_a" href="${pageContext.request.contextPath }/product/productdetail?p_num=${p.p_num}">${p.p_name }&nbsp;&nbsp;
+									<span id="prod_info">&lt;원산지 : ${p.p_info } &gt;</span>
+								</a>
+							</td>
+							<td class="prod_price">
+								<a class="list_a" href="${pageContext.request.contextPath }/product/productdetail?p_num=${p.p_num}">${p.p_price }원</a>
+							</td>
 						</tr>
 					</c:forEach>
 				</table>

@@ -45,10 +45,6 @@
 		select * from cook_product where ca1_num = #{ca1_num} order by p_num
 	</select>
 	
-	<!-- 중분류 카테고리로 검색 -->
-		<select id="selectByC2" parameterType="int" resultMap="ProductResult">
-		select * from cook_product where ca2_num = #{ca2_num} order by p_num
-	</select>
 	
 	<!-- 원산지로  검색 -->
 		<select id="selectByInfo" parameterType="String" resultMap="ProductResult">

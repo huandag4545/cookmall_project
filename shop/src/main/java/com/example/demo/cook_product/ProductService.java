@@ -39,9 +39,7 @@ public class ProductService {
 	public List Cate1List(int ca1_num) {
 		return mapper.selectByC1(ca1_num);
 	}
-	public List Cate2List(int ca2_num) {
-		return mapper.selectByC2(ca2_num);
-	}
+
 	public List InfoList(String p_info) {
 		return mapper.selectByInfo(p_info);
 	}

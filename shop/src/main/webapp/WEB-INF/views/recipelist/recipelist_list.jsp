@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 	<!-- CSS -->
-	<link rel="stylesheet" href="${pageContext.request.contextPath }/assets/css/report/report_List.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath }/assets/css/recipelist/report_List.css?after">
 	
 	<!-- Jquery -->
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -46,7 +46,7 @@
 				 <tr>
 	                <td>${status.count }</td>
 	                <td><a href="${pageContext.request.contextPath }/recipelist_list/mav_Report_Content?report_num=${rl.rl_num }">${rl.rl_title }</a></td>
-	                <td>${rl.rl_writer_id }</td>
+	                <td>${rl.rl_id }</td>
 	                <td>${rl.rl_date }</td>
 	                <td>${rl.rl_views }</td>
 	            </tr>
